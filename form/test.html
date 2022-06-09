@@ -1,0 +1,54 @@
+
+{{ define "Edit" }}
+{{ template "Header" }}
+  {{ template "Menu" }}
+  <head>
+
+  </head>
+
+   <body  onload="resetSelection()">
+
+    
+ <div class="testbox"></div>
+  <form method="POST" action="update">
+  
+  <input type="hidden" name="uid" value="{{ .Id }}" />
+  <fieldset>
+    <legend>Edit User</legend>
+    <div class="columns">
+<div class="item">
+    <label> Name </label> <input type="text" name="name" value="{{.Name}}" ></input>
+</div>
+
+    <br />
+
+    <div class="item">
+    <label> Birthdate </label><input type="date" name="birthdate" value={{.Birthdate}} />
+    </div>
+    <br />
+
+    <div class="item">
+    <label> Address : </label><input type="text" value={{.Address}} name="address" placeholder="Line 1" />
+    </div>
+    <br />
+
+
+<div class="item">
+<label> Pancard : </label><input type="text" name="pancard" value="{{.Pancard}}"/>
+</div>
+<br />
+
+<div class="item">
+<label> Familydetails : </label><input type="text" name="familydetails" value="{{.Familydetails}}" />
+</div>
+<br />
+    </div>
+  </fieldset>
+<div><input type="submit" value="Save user" /></div>
+    
+  </form>
+  </body>
+{{ template "Footer" }}
+{{ end }}
+
+

@@ -1,0 +1,16 @@
+{{ define "Menu" }}
+<nav>
+    <ul>
+    <li>
+   <label value="{{.Name}}"></label>
+    <button style= "float: right;"><a href="/logout">Logout</a></button><span></span>
+    
+    </li>
+    <li>
+    <button style= "float: left;"><a href="/bulkupload">Bulk Upload</a></button>
+    </li>
+    </ul>
+    </nav>
+<a href="/index">HOME</a> | 
+<a href="/new1">NEW</a>
+{{ end }}

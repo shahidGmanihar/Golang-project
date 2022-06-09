@@ -1,0 +1,218 @@
+{{ define "New" }}
+  {{ template "Header" }}
+    {{ template "Menu" }} 
+
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="assets/css/mycss.css">
+
+
+     <script type="text/javascript" >
+     $(document).ready(function() { 
+     $('#btn-submitt').click(function() {  
+ 
+        $(".error").hide();
+        var hasError = false;
+        //var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+       
+        var name = $("#name").val();
+        var birthdate = $("#birthdate").val();
+        var address = $("#address").val();        
+        var pancard = $("#pancard").val();        
+        var familydetails = $("#familydetails").val();        
+        //var city = $("#city_dropdown").val();        
+
+
+        if(name == '') {
+            $("#name").after('<span style="color: rgb(228, 60, 18); font-size: 10pt" class="error">*Enter your name.</span>');
+            hasError = true;
+          } 
+
+          if(birthdate == '') {
+            $("#birthdate").after('<span style="color: rgb(228, 60, 18); font-size: 10pt" class="error">*Select your birthdate.</span>');
+            hasError = true;
+          } 
+
+
+        if(address == '') {
+            $("#address").after('<span style="color: rgb(228, 60, 18); font-size: 10pt" class="error">*Enter your address.</span>');
+            hasError = true;
+        }
+        if(pancard == '') {
+            $("#pancard").after('<span style="color: rgb(228, 60, 18); font-size: 10pt" class="error">* Enter your pan details.</span>');
+            hasError = true;
+          } else if(String(pancard).length>10){
+            $("#pancard").after('<span style="color: rgb(228, 60, 18); font-size: 10pt" class="error">* Pan details should be max 10 character</span>');
+            hasError = true;
+
+          }
+
+
+          if(familydetails == '') {
+            $("#familydetails").after('<span style="color: rgb(228, 60, 18); font-size: 10pt" class="error">*Select state.</span>');
+            hasError = true;
+          } 
+          
+          if(hasError == true) { return false; }
+          
+          });
+});
+</script>
+
+    <script type="text/javascript">
+var citiesByState = {
+Maharashtra: ["Mumbai","Thane","Raigad"],
+Rajasthan: ["Jaipur","Jodhpur","Pushkar"],
+MadhyaPradesh:["Bhopal","Indore","Jabalpur"],
+}
+function makeSubmenu(value) {
+if(value.length==0) document.getElementById("citySelect").innerHTML = "<option></option>";
+else {
+var citiesOptions = "";
+for(cityId in citiesByState[value]) {
+citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+}
+document.getElementById("citySelect").innerHTML = citiesOptions;
+}
+}
+function displaySelected() { var state = document.getElementById("stateSelect").value;
+var city = document.getElementById("citySelect").value;
+alert(state+"\n"+city);
+}
+function resetSelection() {
+document.getElementById("stateSelect").selectedIndex = 0;
+document.getElementById("citySelect").selectedIndex = 0;
+}
+</script>
+
+    </head>
+
+     <body  onload="resetSelection()">
+
+
+   
+   <div class="testbox">
+   <form method="POST" action="add">
+       
+    <fieldset>
+        <legend style="color: white;">New User</legend>
+        <div class="columns">
+            <div class="item">
+                <label> Name: <span style="color:red"></span></label><input type="text" id="name" name="name" />
+            </div>
+   
+      
+     
+
+      <br />
+
+      <div class="item">
+      <label> Birthdate: <span style="color:red"></span> </label> <input type="date" id="birthdate" name="birthdate" />
+      </div>
+      <br />
+
+      <div class="item">
+      <label> Address1 : </label><input type="text" value=""address1" name="address1" placeholder="Line 1" />
+      </div>
+      <br />
+
+     <div class="item">
+     <label> Address2 : </label><input type="text" name="address2" value=""address2" placeholder="Line 1" />
+     </div>
+     <br />
+
+<div class="item">
+<label>State : </label><select class="form-control country" name="stateSelect" id="stateSelect" size="1" onchange="makeSubmenu(this.value)">
+<option value="" disabled selected>Choose State</option>
+<option>Maharashtra</option>
+<option>Rajasthan</option>
+<option>MadhyaPradesh</option>
+</select>
+</div>
+<br />
+
+<div class="item">
+<label>City : </label><select name="citySelect" id="citySelect" size="1" >
+<option value="" disabled selected>Choose City</option>
+<option></option>
+</select>
+</div>
+<br />
+
+<div class="item">
+<label> Pin Code :</label><input type="text" id="pincode" name="pincode" placeholder="Pincode" />
+</div>
+<br />
+
+<div class="item">
+<label> Pancard : <span style="color:red"></span></label><input type="text" id="pancard" name="pancard" />
+</div>
+
+</div>
+
+</fieldset>
+
+<br /> 
+<fieldset>
+    <legend style="color: white"> Family Details </legend>
+    <div class="columns">
+        
+   
+      <div class="item">
+        <label> Relation: </label>
+        <select name="relation"><br />
+        <option value="Father">Father</option>
+        <option value="Mother">Mother</option>
+        <option value="Brother">Brother</option>
+        <option value="Sister">Sister</option>
+        <option value="Wife">Wife</option>
+        <option value="Husband">Husband</option>
+        </select><br />
+      </div>
+   
+      <div class="item"
+        <label> Name: </label>
+        <input type="text" name="name1" />
+      </div>
+       <br />
+        <div class="item">
+            <label> DOB: </label>
+            <input type="date" name="dob" />
+        </div>
+         <br />
+         <div class="item">
+            <label> Address: </label>
+            <input type="text" name="address3" />
+         </div>
+         <br />
+        <div>
+            <label> Occupation: </label>
+            <input type="text" name="occupation" />
+        </div>
+         <br />
+       <div class="item">
+        <label>Gender :</legend>
+            <label for="male">Male</label>
+            <input type="radio" name="gender" id="male" value="male" checked>
+            <label for="female">Female</label>
+            <input type="radio" name="gender" id="female" value="female">
+       </div>
+     </div>
+</fieldset>
+
+
+
+
+<br />
+
+<div class="div-input" style="padding-left: 526px;   padding-right: 501px;">
+    <input style="color:white; background:round; background-color:#8ebf42; width: 200px;" type="submit" id="btn-submitt" value="Save" /></div>
+
+</form>
+</div>
+</body>
+  {{ template "Footer" }}
+{{ end }}
+

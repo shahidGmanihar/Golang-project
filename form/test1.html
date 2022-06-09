@@ -1,0 +1,81 @@
+<body>
+    <div class="testbox">
+    <form>
+      
+      <br/>
+      <fieldset>
+        <legend>New User</legend>
+        <div class="columns">
+          <div class="item">
+            
+            <label> Name </label><input type="text" name="name" required /><br />
+          </div>
+          <div class="item">
+           
+            <label> DOB </label><input type="date" name="dob"   required/><br />
+          </div>
+          <div class="item">
+            <label for="address">Address<span>*</span></label>
+            <input id="address" type="text"   name="address" />
+          </div>
+          <div class="item">
+            <label for="zip">Zip Code<span>*</span></label>
+            <input id="zip" type="text"   name="zip" required/>
+          </div>
+          <div class="item">
+            
+           
+                </head>
+                <body onload="resetSelection()">
+                <select id="countrySelect" size="1" onchange="makeSubmenu(this.value)">
+                <option value="" disabled selected>Choose State</option>
+                <option>Odisha</option>
+                <option>Maharashtra</option>
+                <option>Kerala</option>
+                </select>
+                <select id="citySelect" size="1" >
+                <option value="" disabled selected>Choose City</option>
+                <option></option>
+                </select>
+                
+
+          </div>
+          
+      </fieldset>
+      <br/>
+      <fieldset>
+      <legend>Dates</legend>
+      <div class="columns">
+      <div class="item">
+        <label> Relationship </label> 
+         <select name="Relationship"><br />
+        <option value="Father">Father</option>
+        <option value="Mother">Mother</option>
+        <option value="Brother">Brother</option>
+        <option value="Sister">Sister</option>
+        <option value="Wife">Wife</option>
+        <option value="Husband">Husband</option>
+        </select><br />
+      </div>
+      <div class="item">
+        <label> Name </label><input type="text" name="name" required /><br />
+      </div>
+      <div class="item">
+        <label> DOB </label><input type="date" name="dob"   required/><br />
+      </div>
+      <div class="item">
+        <label> Address </label><input type="text" name="address" required/><br />
+      </div>    
+      <div class="item">
+        <label> Occupation </label><input type="text" name="address" required/><br /></div>
+      </div>    
+      
+      </div>
+      
+      </fieldset>
+      <div class="btn-block">
+      <button type="submit" href="/">Submit</button>
+      </div>
+    </form>
+    </div>
+  </body>

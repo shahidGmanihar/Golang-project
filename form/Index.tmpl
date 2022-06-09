@@ -1,0 +1,53 @@
+{{ define "Index" }}
+  {{ template "Header" }}
+    {{ template "Menu"  }}
+
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="assets/css/mycss.css">
+    </head>
+
+    <body>
+    <h2> Registered User</h2>
+    <table class="table table-striped" id="mytable" bordercolor = "green" border="1">
+      <thead style="background-color:steelblue">
+      <tr>
+        <td align="center" style="background-color:grey">ID</td>
+        <td align="center">Name</td>
+        <td align="center">Birthdate</td>
+        <td align="center">Address</td>
+        <td align="center">Pancard</td>
+        <td align="center">Familydetails</td>
+        <td align="center">View</td>
+        <td align="center">Edit</td>
+        <td align="center">Delete</td>
+      </tr>
+       </thead>
+       <tbody>
+    {{ range . }}
+      <tr>
+        <td style="background-color:grey">{{ .Id }}</td>
+        <td> {{ .Name }}</td>
+        <td>{{ .Birthdate }}</td>
+        <td>{{ .Address }} </td>
+        <td>{{ .Pancard }} </td>
+        <td>{{ .Familydetails }} </td> 
+        <td><a href="/show?id={{ .Id }}">View</a></td>
+        <td><a href="/edit?id={{ .Id }}">Edit</a></td>
+        <td><a href="/del?id={{.Id }}">Delete</a><td>
+      </tr>
+    {{ end }}
+       </tbody>
+    </table>
+    <div>
+    <button style= "float: left;"><a href="/rowins">Excel Export</a></button>
+    </div>
+     <div>
+    <button style= "float: right;"><a href="/photo">Photo Gallery</a></button>
+    </div>
+
+    </body>
+  {{ template "Footer" }}
+{{ end }}
